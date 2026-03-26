@@ -7,6 +7,12 @@ A playful, lightweight sample‑audio‑synth inspired by the PO‑33 workflow. 
 
 ![tapSynth](Doc/tapSynth.png)
 
+## fixes
+
+* in write mode keyboard buttons work as expected, but mouse buttons do not store the latest used drums, instead play the cachedsound buttons
+
+
+
 ## feature ideas
 
 * run multiple instances of the app and sync them (FX)?
