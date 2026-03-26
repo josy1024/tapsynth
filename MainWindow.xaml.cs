@@ -78,15 +78,7 @@ namespace TapSynth
                 if (slotHit != -1)
                 {
                     vm.SelectedTrackIndex = slotHit;
-                    
-                    if (Keyboard.IsKeyDown(Key.W))
-                    {
-                        vm.LiveLooperMode = !vm.LiveLooperMode;
-                    }
-                    else
-                    {
-                        vm.HitPad(slotHit);
-                    }
+                    vm.HitPad(slotHit);
                 }
             }
         }

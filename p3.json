@@ -1,0 +1,2436 @@
+{
+  "Tracks": [
+    {
+      "Steps": [
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": true,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        }
+      ],
+      "IsMelodic": true,
+      "SlotIndex": 0,
+      "PitchSemitones": 0.0,
+      "GlobalVolume": 1.0
+    },
+    {
+      "Steps": [
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        }
+      ],
+      "IsMelodic": true,
+      "SlotIndex": 1,
+      "PitchSemitones": 0.0,
+      "GlobalVolume": 1.0
+    },
+    {
+      "Steps": [
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        }
+      ],
+      "IsMelodic": true,
+      "SlotIndex": 2,
+      "PitchSemitones": 0.0,
+      "GlobalVolume": 1.0
+    },
+    {
+      "Steps": [
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        }
+      ],
+      "IsMelodic": true,
+      "SlotIndex": 3,
+      "PitchSemitones": 0.0,
+      "GlobalVolume": 1.0
+    },
+    {
+      "Steps": [
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        }
+      ],
+      "IsMelodic": true,
+      "SlotIndex": 4,
+      "PitchSemitones": 0.0,
+      "GlobalVolume": 1.0
+    },
+    {
+      "Steps": [
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        }
+      ],
+      "IsMelodic": true,
+      "SlotIndex": 5,
+      "PitchSemitones": 0.0,
+      "GlobalVolume": 1.0
+    },
+    {
+      "Steps": [
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        }
+      ],
+      "IsMelodic": true,
+      "SlotIndex": 6,
+      "PitchSemitones": 0.0,
+      "GlobalVolume": 1.0
+    },
+    {
+      "Steps": [
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        }
+      ],
+      "IsMelodic": true,
+      "SlotIndex": 7,
+      "PitchSemitones": 0.0,
+      "GlobalVolume": 1.0
+    },
+    {
+      "Steps": [
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        }
+      ],
+      "IsMelodic": false,
+      "SlotIndex": 8,
+      "PitchSemitones": 0.0,
+      "GlobalVolume": 1.0
+    },
+    {
+      "Steps": [
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        }
+      ],
+      "IsMelodic": false,
+      "SlotIndex": 9,
+      "PitchSemitones": 0.0,
+      "GlobalVolume": 1.0
+    },
+    {
+      "Steps": [
+        {
+          "IsActive": true,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": true,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": true,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": true,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": true,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": true,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": true,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": true,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": true,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": true,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": true,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": true,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        }
+      ],
+      "IsMelodic": false,
+      "SlotIndex": 10,
+      "PitchSemitones": 17.0,
+      "GlobalVolume": 1.0
+    },
+    {
+      "Steps": [
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        }
+      ],
+      "IsMelodic": false,
+      "SlotIndex": 11,
+      "PitchSemitones": 0.0,
+      "GlobalVolume": 1.0
+    },
+    {
+      "Steps": [
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        }
+      ],
+      "IsMelodic": false,
+      "SlotIndex": 12,
+      "PitchSemitones": 0.0,
+      "GlobalVolume": 1.0
+    },
+    {
+      "Steps": [
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": true,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": true,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": true,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": true,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        }
+      ],
+      "IsMelodic": false,
+      "SlotIndex": 13,
+      "PitchSemitones": 0.0,
+      "GlobalVolume": 1.0
+    },
+    {
+      "Steps": [
+        {
+          "IsActive": true,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": true,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": true,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": true,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        }
+      ],
+      "IsMelodic": false,
+      "SlotIndex": 14,
+      "PitchSemitones": 0.0,
+      "GlobalVolume": 1.0
+    },
+    {
+      "Steps": [
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        },
+        {
+          "IsActive": false,
+          "Velocity": 1.0,
+          "Pan": 0.0,
+          "PitchRatio": 1.0,
+          "RandomizePitch": false,
+          "RandomizeVelocity": false,
+          "Probability": 100
+        }
+      ],
+      "IsMelodic": false,
+      "SlotIndex": 15,
+      "PitchSemitones": 0.0,
+      "GlobalVolume": 1.0
+    }
+  ]
+}

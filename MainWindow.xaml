@@ -54,11 +54,16 @@
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,0">
                     <TextBlock Text="{Binding SelectedTrackIndex, StringFormat='TRK {0:D2}'}" FontSize="28" FontWeight="Bold" Margin="0,0,20,0" Opacity="0.7"/>
-
+                    
                     <Button Content="-" Command="{Binding AdjustBPMCommand}" CommandParameter="-1" Focusable="False" Width="20" Background="Transparent" BorderThickness="0"/>
                     <TextBlock Text="{Binding BPM, StringFormat='BPM {0}'}" FontSize="28" FontWeight="Bold" Opacity="0.7" Margin="5,0"/>
                     <Button Content="+" Command="{Binding AdjustBPMCommand}" CommandParameter="1" Focusable="False" Width="20" Background="Transparent" BorderThickness="0"/>
                 </StackPanel>
+                
+                <!-- Single Line Status Text -->
+                <Border Visibility="{Binding StatusVisibility}" Background="#7F9982" CornerRadius="4" HorizontalAlignment="Center" Margin="0,10,0,0">
+                    <TextBlock Text="{Binding StatusText}" Foreground="#222" FontWeight="Bold" FontSize="14" Padding="10,2"/>
+                </Border>
             </StackPanel>
         </Border>
 
@@ -105,11 +110,24 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Command="{Binding ToggleCommand}" CommandParameter="{Binding Index}" Style="{StaticResource PadStyle}">
+                        <Button Command="{Binding ToggleCommand}" CommandParameter="{Binding Index}">
+                            <Button.Style>
+                                <Style TargetType="Button" BasedOn="{StaticResource PadStyle}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding DataContext.IsFxModeActive, RelativeSource={RelativeSource AncestorType=ItemsControl}}" Value="True">
+                                            <Setter Property="Background" Value="#CC9933"/>
+                                            <Setter Property="Foreground" Value="#111"/>
+                                        </DataTrigger>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter Property="Background" Value="#E55151"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
                             <Grid>
                                 <Ellipse Width="35" Height="35" Fill="#D14747" Visibility="{Binding IsActive, Converter={StaticResource BoolToVis}}"/>
                                 <Ellipse Width="10" Height="10" Fill="#47D16A" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="-5" Visibility="{Binding IsPlayhead, Converter={StaticResource BoolToVis}}"/>
-                                <TextBlock Text="{Binding DisplayText}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="White" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding DisplayText}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Bold"/>
                             </Grid>
                         </Button>
                     </DataTemplate>

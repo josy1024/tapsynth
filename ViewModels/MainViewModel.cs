@@ -208,6 +208,31 @@ namespace TapSynth.ViewModels
             }
         }
 
+        public string StatusText
+        {
+            get => _statusText;
+            set { _statusText = value; OnPropertyChanged(); }
+        }
+        private string _statusText;
+
+        public System.Windows.Visibility StatusVisibility
+        {
+            get => _statusVisibility;
+            set { _statusVisibility = value; OnPropertyChanged(); }
+        }
+        private System.Windows.Visibility _statusVisibility = System.Windows.Visibility.Hidden;
+
+        private async void ShowStatus(string message)
+        {
+            StatusText = message;
+            StatusVisibility = System.Windows.Visibility.Visible;
+            await System.Threading.Tasks.Task.Delay(3000);
+            if (StatusText == message)
+            {
+                StatusVisibility = System.Windows.Visibility.Hidden;
+            }
+        }
+
         public void HitPad(int slotIndex)
         {
             if (IsSaveMode)
@@ -215,7 +240,7 @@ namespace TapSynth.ViewModels
                 var json = Newtonsoft.Json.JsonConvert.SerializeObject(_sequencer.CurrentPattern, Newtonsoft.Json.Formatting.Indented);
                 System.IO.File.WriteAllText($"p{slotIndex + 1}.json", json);
                 IsSaveMode = false;
-                System.Windows.MessageBox.Show($"Pattern saved to slot {slotIndex + 1} (p{slotIndex + 1}.json)", "Saved");
+                ShowStatus($"p{slotIndex + 1}.json saved");
                 return;
             }
 
@@ -227,11 +252,11 @@ namespace TapSynth.ViewModels
                     var json = System.IO.File.ReadAllText(file);
                     _sequencer.CurrentPattern = Newtonsoft.Json.JsonConvert.DeserializeObject<TapSynth.Sequencing.Pattern>(json);
                     UpdateStepDisplay();
-                    System.Windows.MessageBox.Show($"Pattern loaded from slot {slotIndex + 1} (p{slotIndex + 1}.json)", "Loaded");
+                    ShowStatus($"p{slotIndex + 1}.json loaded");
                 }
                 else
                 {
-                    System.Windows.MessageBox.Show("Pattern slot is empty!", "Load Failed");
+                    ShowStatus("Pattern not found!");
                 }
                 IsLoadMode = false;
                 return;
@@ -282,7 +307,7 @@ namespace TapSynth.ViewModels
             var msg = "TapSynth K.O! Hotkeys:\n\n" +
                       "Keyboard Pads: 1234, QWER, ASDF, YXCV/ZXCV\n" +
                       "Play/Stop: SPACE\n" +
-                      "Live Looper (WriteMode): Toggle with 'L' or hold 'W'\n" +
+                      "Live Looper (WriteMode): Toggle with 'L'\n" +
                       "Bitcrush FX: SHIFT\n" +
                       "New Pattern: P\n" +
                       "Pitch (Knob A): Up/Down Arrows / Mouse Wheel\n" +
