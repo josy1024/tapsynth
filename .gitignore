@@ -416,3 +416,6 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# no recordings of audio files, which can be large and are not source code
+rec*.wav

@@ -90,10 +90,10 @@ namespace TapSynth.Audio
             var boundariesFrames = new List<int>();
 
             // Parameters for improved onset detection
-            float highThreshold = 0.10f; // require stronger peaks
+            float highThreshold = 0.14f; // require stronger peaks (reduce false positives)
             float lowThreshold = 0.06f;  // hysteresis lower bound
-            float emaAlpha = 0.05f;      // envelope smoothing
-            int minDistanceFrames = Math.Max(1, WaveFormat.SampleRate / 8); // ~125ms at 44100
+            float emaAlpha = 0.06f;      // envelope smoothing (slightly stronger smoothing)
+            int minDistanceFrames = Math.Max(1, WaveFormat.SampleRate / 8); // base minimum distance between raw detections
 
             float env = 0f;
             float prevEnv = 0f;
@@ -122,7 +122,8 @@ namespace TapSynth.Audio
             }
 
             // Consolidate nearby detections: keep the strongest in a short cluster
-            int minSeparationFrames = Math.Max(1, WaveFormat.SampleRate / 6); // ~166ms
+            // Consolidate detections within a larger cluster window to avoid splitting fat beats
+            int minSeparationFrames = Math.Max(1, WaveFormat.SampleRate / 3); // ~333ms
             var consolidated = new List<int>();
             foreach (var b in boundariesFrames)
             {

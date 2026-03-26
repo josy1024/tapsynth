@@ -130,9 +130,23 @@ namespace TapSynth.Audio
                 // ignore copy errors
             }
 
-            var sound = new CachedSound(_tempRecFile, 44100);
-            sound.Name = name;
-            return sound;
+            try
+            {
+                var sound = new CachedSound(_tempRecFile, 44100);
+                sound.Name = name;
+                return sound;
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+                    var logPath = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "tapsynth_error.log");
+                    var msg = $"{DateTime.UtcNow:O} - Error creating CachedSound from {_tempRecFile}: {ex}\n";
+                    System.IO.File.AppendAllText(logPath, msg);
+                }
+                catch { }
+                return null;
+            }
         }
 
         public void PlaySlot(int slotIndex, CachedSound sound, double pitchRatio = 1.0, float velocity = 1.0f, float pan = 0.0f)
