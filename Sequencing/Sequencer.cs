@@ -43,6 +43,13 @@ namespace TapSynth.Sequencing
                     if (step.Probability < 100 && _rnd.Next(0, 100) > step.Probability)
                         continue;
 
+                    CachedSound soundToPlay = SlotSounds[track.SlotIndex];
+                    if (track.SlotIndex >= 8 && SlicedSounds[track.SlotIndex] != null)
+                    {
+                        if (step.PadIndex >= 0 && step.PadIndex < 16)
+                            soundToPlay = SlicedSounds[track.SlotIndex][step.PadIndex];
+                    }
+
                     double trackPitchRatio = Math.Pow(2, track.PitchSemitones / 12.0);
                     double pitch = step.PitchRatio * trackPitchRatio;
                     float vol = step.Velocity * track.GlobalVolume;
@@ -53,7 +60,7 @@ namespace TapSynth.Sequencing
                     if (step.RandomizeVelocity)
                         vol = (float)(0.3 + _rnd.NextDouble() * 0.7) * track.GlobalVolume;
 
-                    Audio.PlaySlot(track.SlotIndex, SlotSounds[track.SlotIndex], pitch, vol, step.Pan);
+                    Audio.PlaySlot(track.SlotIndex, soundToPlay, pitch, vol, step.Pan);
                 }
             }
         }
@@ -66,16 +73,29 @@ namespace TapSynth.Sequencing
         }
 
         // Live performance
-        public void PlayPad(int slotIndex)
+        public CachedSound[][] SlicedSounds = new CachedSound[16][];
+
+        public void PlayPad(int trackIndex, int padIndex)
         {
-            var track = CurrentPattern.Tracks[slotIndex];
+            var track = CurrentPattern.Tracks[trackIndex];
             double trackPitchRatio = Math.Pow(2, track.PitchSemitones / 12.0);
-            Audio.PlaySlot(slotIndex, SlotSounds[slotIndex], trackPitchRatio, track.GlobalVolume, 0.0f);
+            double padPitchRatio = trackIndex < 8 ? Math.Pow(2, (padIndex - 8) / 12.0) : 1.0;
             
-            // If recording is on (Live Looper), plot it on the current step
+            CachedSound soundToPlay = SlotSounds[trackIndex];
+            if (trackIndex >= 8 && SlicedSounds[trackIndex] != null)
+            {
+                soundToPlay = SlicedSounds[trackIndex][padIndex];
+            }
+
+            Audio.PlaySlot(trackIndex, soundToPlay, padPitchRatio * trackPitchRatio, track.GlobalVolume, 0.0f);
+            
             if (LiveLooperMode && Clock.IsPlaying)
             {
-                track.Steps[CurrentStep].IsActive = true;
+                int currentStep = CurrentStep;
+                track.Steps[currentStep].IsActive = true;
+                track.Steps[currentStep].Velocity = 1.0f;
+                track.Steps[currentStep].PadIndex = padIndex;
+                track.Steps[currentStep].PitchRatio = padPitchRatio;
             }
         }
     }

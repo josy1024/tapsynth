@@ -63,10 +63,10 @@ namespace TapSynth
                     // Arrow Keys / Media Keys mapped to Knob A (Pitch) and Knob B (Volume)
                     case Key.Up:
                     case Key.MediaNextTrack:
-                        vm.AdjustKnobA(0.05); return;
+                        vm.AdjustKnobA(1.0); return;
                     case Key.Down:
                     case Key.MediaPreviousTrack:
-                        vm.AdjustKnobA(-0.05); return;
+                        vm.AdjustKnobA(-1.0); return;
                     case Key.Right:
                     case Key.VolumeUp:
                         vm.AdjustKnobB(0.05f); return;
@@ -77,7 +77,6 @@ namespace TapSynth
 
                 if (slotHit != -1)
                 {
-                    vm.SelectedTrackIndex = slotHit;
                     vm.HitPad(slotHit);
                 }
             }

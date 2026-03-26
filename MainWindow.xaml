@@ -44,11 +44,26 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
+        <!-- Device Selection Top Bar -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-15,0,0">
+            <TextBlock Text="IN:" Foreground="#888" FontSize="10" VerticalAlignment="Center"/>
+            <ComboBox ItemsSource="{Binding InputDevices}" SelectedIndex="{Binding SelectedInputDevice}" Width="150" Height="20" FontSize="10" Margin="5,0"/>
+            <TextBlock Text="OUT:" Foreground="#888" FontSize="10" VerticalAlignment="Center" Margin="10,0,5,0"/>
+            <ComboBox ItemsSource="{Binding OutputDevices}" SelectedIndex="{Binding SelectedOutputDevice}" Width="150" Height="20" FontSize="10"/>
+        </StackPanel>
+
         <!-- LCD Screen -->
-        <Border Grid.Row="0" Background="#9FB9A2" CornerRadius="12" BorderBrush="#0F1113" BorderThickness="4" Margin="10,0,10,10">
+        <Border Grid.Row="0" Background="#9FB9A2" CornerRadius="12" BorderBrush="#0F1113" BorderThickness="4" Margin="10,20,10,10">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock Text="TAP SYNTH" FontFamily="Segoe UI Black" FontSize="32" Opacity="0.8" Margin="0,0,10,0"/>
+                    <Button Content="🎤 MIC" Command="{Binding ToggleAudioRecordCommand}" Background="{Binding AudioRecordButtonBackground}" Foreground="White" FontWeight="Bold" Padding="8,2" BorderThickness="0" Margin="0,0,10,0" Focusable="False">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="4"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
                     <Button Content="(?) Help" Command="{Binding ShowHelpCommand}" Focusable="False" Background="Transparent" BorderThickness="0" Foreground="#222" FontWeight="Bold" VerticalAlignment="Center"/>
                 </StackPanel>
 
@@ -135,16 +150,16 @@
             </ItemsControl>
 
             <!-- Function Button Stack on Right (Col 4) -->
-            <Button Grid.Row="0" Grid.Column="4" Content="SAVE" Command="{Binding ToggleSaveModeCommand}" Style="{StaticResource PadStyle}" Background="{Binding SaveButtonBackground}" FontSize="14"/>
-            <Button Grid.Row="1" Grid.Column="4" Content="LOAD" Command="{Binding ToggleLoadModeCommand}" Style="{StaticResource PadStyle}" Background="{Binding LoadButtonBackground}" FontSize="14"/>
-            <Button Grid.Row="2" Grid.Column="4" Content="BPM" Style="{StaticResource PadStyle}" Background="#2D4D44" FontSize="14"/>
-            <Button Grid.Row="3" Grid.Column="4" Content="FX" Command="{Binding ToggleFxModeCommand}" Style="{StaticResource PadStyle}" Background="{Binding FxButtonBackground}" FontSize="14"/>
+            <Button Grid.Row="0" Grid.Column="4" Content="SND" Command="{Binding ToggleSoundModeCommand}" Style="{StaticResource PadStyle}" Background="{Binding SoundButtonBackground}" FontSize="14"/>
+            <Button Grid.Row="1" Grid.Column="4" Content="FX" Command="{Binding ToggleFxModeCommand}" Style="{StaticResource PadStyle}" Background="{Binding FxButtonBackground}" FontSize="14"/>
+            <Button Grid.Row="2" Grid.Column="4" Content="SAVE" Command="{Binding ToggleSaveModeCommand}" Style="{StaticResource PadStyle}" Background="{Binding SaveButtonBackground}" FontSize="14"/>
+            <Button Grid.Row="3" Grid.Column="4" Content="LOAD" Command="{Binding ToggleLoadModeCommand}" Style="{StaticResource PadStyle}" Background="{Binding LoadButtonBackground}" FontSize="14"/>
             <Button Grid.Row="4" Grid.Column="4" Content="{Binding PlayButtonText}" Command="{Binding TogglePlayCommand}" Style="{StaticResource PadStyle}" Background="#D14747" FontSize="14"/>
 
             <!-- Function Button Stack on Bottom (Row 4, Col 0-3) -->
-            <Button Grid.Row="4" Grid.Column="0" Content="REC" Command="{Binding ToggleLiveLooperCommand}" Style="{StaticResource PadStyle}" Background="{Binding WriteButtonBackground}" FontSize="14"/>
-            <Button Grid.Row="4" Grid.Column="1" Content="UNDO" Command="{Binding UndoCommand}" Style="{StaticResource PadStyle}" Background="#3A3A3A" FontSize="14"/>
-            <Button Grid.Row="4" Grid.Column="2" Content="REDO" Command="{Binding RedoCommand}" Style="{StaticResource PadStyle}" Background="#3A3A3A" FontSize="14"/>
+            <Button Grid.Row="4" Grid.Column="0" Content="UNDO" Command="{Binding UndoCommand}" Style="{StaticResource PadStyle}" Background="#3A3A3A" FontSize="14"/>
+            <Button Grid.Row="4" Grid.Column="1" Content="REDO" Command="{Binding RedoCommand}" Style="{StaticResource PadStyle}" Background="#3A3A3A" FontSize="14"/>
+            <Button Grid.Row="4" Grid.Column="2" Content="BPM" Style="{StaticResource PadStyle}" Background="#2D4D44" FontSize="14"/>
             <Button Grid.Row="4" Grid.Column="3" Content="WRITE" Command="{Binding ToggleLiveLooperCommand}" Style="{StaticResource PadStyle}" Background="{Binding WriteButtonBackground}" FontSize="14"/>
         </Grid>
     </Grid>

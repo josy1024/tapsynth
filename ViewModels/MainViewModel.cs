@@ -19,12 +19,12 @@ namespace TapSynth.ViewModels
         public int SelectedTrackIndex
         {
             get => _selectedTrackIndex;
-            set { 
-                _selectedTrackIndex = value; 
-                OnPropertyChanged(); 
+            set {
+                _selectedTrackIndex = value;
+                OnPropertyChanged();
                 OnPropertyChanged(nameof(SelectedTrackPitch));
                 OnPropertyChanged(nameof(SelectedTrackVolume));
-                UpdateStepDisplay(); 
+                UpdateStepDisplay();
             }
         }
 
@@ -35,6 +35,31 @@ namespace TapSynth.ViewModels
         public string SaveButtonBackground => IsSaveMode ? "#44EE44" : "#3A3A3A";
         public string LoadButtonBackground => IsLoadMode ? "#44AAEE" : "#3A3A3A";
         public string FxButtonBackground => IsFxModeActive ? "#EEAA44" : "#2D4D44";
+        public string AudioRecordButtonBackground => IsRecordingAudio ? "#FF2222" : "#2D4D44";
+        public string SoundButtonBackground => IsSoundEditMode ? "#FFCC00" : "#2D4D44";
+
+        public System.Collections.ObjectModel.ObservableCollection<string> InputDevices { get; }
+        public System.Collections.ObjectModel.ObservableCollection<string> OutputDevices { get; }
+
+        private int _selectedInputDevice = 0;
+        public int SelectedInputDevice { get => _selectedInputDevice; set { _selectedInputDevice = value; OnPropertyChanged(); } }
+
+        private int _selectedOutputDevice = 0;
+        public int SelectedOutputDevice { get => _selectedOutputDevice; set { _selectedOutputDevice = value; _audio.SetOutputDevice(value - 1); OnPropertyChanged(); } }
+
+        private bool _isRecordingAudio;
+        public bool IsRecordingAudio
+        {
+            get => _isRecordingAudio;
+            set { _isRecordingAudio = value; OnPropertyChanged(); OnPropertyChanged(nameof(AudioRecordButtonBackground)); }
+        }
+
+        private bool _isSoundEditMode;
+        public bool IsSoundEditMode
+        {
+            get => _isSoundEditMode;
+            set { _isSoundEditMode = value; OnPropertyChanged(); OnPropertyChanged(nameof(SoundButtonBackground)); }
+        }
 
         public bool IsPlaying
         {
@@ -89,6 +114,8 @@ namespace TapSynth.ViewModels
         public ICommand ToggleLiveLooperCommand { get; }
         public ICommand ToggleSaveModeCommand { get; }
         public ICommand ToggleLoadModeCommand { get; }
+        public ICommand ToggleSoundModeCommand { get; }
+        public ICommand ToggleAudioRecordCommand { get; }
 
         private bool _isFxModeActive;
         public bool IsFxModeActive
@@ -103,24 +130,27 @@ namespace TapSynth.ViewModels
             _sequencer = new Sequencer(_audio);
             _undoManager = new UndoRedoManager();
 
+            InputDevices = new System.Collections.ObjectModel.ObservableCollection<string>(AudioEngine.GetInputDevices());
+            OutputDevices = new System.Collections.ObjectModel.ObservableCollection<string>(AudioEngine.GetOutputDevices());
+
             // Setup temporary synth sounds with more variety
             for (int i = 0; i < 16; i++)
             {
-                if (i < 8) 
+                if (i < 8)
                 {
-                    int freq = i < 4 ? 50 + i * 30 : 220 + (i - 4) * 110; 
+                    int freq = i < 4 ? 50 + i * 30 : 220 + (i - 4) * 110;
                     _sequencer.SlotSounds[i] = CachedSound.CreateTestTone($"Synth {i}", freq, i < 4 ? 120 : 300, 44100, false);
                 }
-                else 
+                else
                 {
-                    if (i == 8) 
+                    if (i == 8)
                     {
                         // 808 Style Big Deep Kick!
                         _sequencer.SlotSounds[i] = CachedSound.CreateTestTone($"Kick Deep", 45, 500, 44100, false);
                     }
-                    else 
+                    else
                     {
-                        bool isNoise = (i == 9 || i == 10 || i == 11 || i == 13 || i == 15); 
+                        bool isNoise = (i == 9 || i == 10 || i == 11 || i == 13 || i == 15);
                         int freq = isNoise ? 100 : 60 + (i - 8) * 40;
                         _sequencer.SlotSounds[i] = CachedSound.CreateTestTone($"Drum {i}", freq, isNoise ? 80 : 150, 44100, isNoise);
                     }
@@ -129,26 +159,61 @@ namespace TapSynth.ViewModels
 
             TogglePlayCommand = new RelayCommand(_ => TogglePlay());
             ToggleBitcrushCommand = new RelayCommand(_ => EnableBitcrush = !EnableBitcrush);
-            ToggleFxModeCommand = new RelayCommand(_ => IsFxModeActive = !IsFxModeActive);
+            ToggleFxModeCommand = new RelayCommand(_ => { 
+                IsFxModeActive = !IsFxModeActive; 
+                if (IsFxModeActive) ShowStatus("FX Mode: Press pad 1-6!"); 
+            });
             ToggleLiveLooperCommand = new RelayCommand(_ => LiveLooperMode = !LiveLooperMode);
             ToggleSaveModeCommand = new RelayCommand(_ => IsSaveMode = !IsSaveMode);
             ToggleLoadModeCommand = new RelayCommand(_ => IsLoadMode = !IsLoadMode);
+            ToggleSoundModeCommand = new RelayCommand(_ => { 
+                IsSoundEditMode = !IsSoundEditMode; 
+                if (IsSoundEditMode) ShowStatus("Select Track (1-16)..."); 
+            });
+
+            ToggleAudioRecordCommand = new RelayCommand(_ => {
+                if (!IsRecordingAudio)
+                {
+                    _audio.StartRecording(SelectedInputDevice - 1);
+                    IsRecordingAudio = true;
+                    ShowStatus("Mic Recording active...");
+                }
+                else
+                {
+                    var sound = _audio.StopRecordingAndGetSound($"Rec_Slot{SelectedTrackIndex}");
+                    if (sound != null)
+                    {
+                        if (SelectedTrackIndex >= 8)
+                        {
+                            var slices = sound.Slice(16);
+                            _sequencer.SlicedSounds[SelectedTrackIndex] = slices;
+                            ShowStatus("Audio sliced 16-ways!");
+                        }
+                        else
+                        {
+                            _sequencer.SlotSounds[SelectedTrackIndex] = sound;
+                            ShowStatus("Audio sample mapped!");
+                        }
+                    }
+                    IsRecordingAudio = false;
+                }
+            });
 
             UndoCommand = new RelayCommand(_ => { _undoManager.Undo(); UpdateStepDisplay(); });
             RedoCommand = new RelayCommand(_ => { _undoManager.Redo(); UpdateStepDisplay(); });
-            ToggleStepCommand = new RelayCommand(param => { 
-                if(param != null) 
+            ToggleStepCommand = new RelayCommand(param => {
+                if(param != null)
                 {
                     if (LiveLooperMode) return; // Disallow mouse clicking in live loop mode
                     ToggleStep(int.Parse(param.ToString()));
                 }
             });
             SelectTrackCommand = new RelayCommand(param => { if(param != null) SelectedTrackIndex = int.Parse(param.ToString()); });
-            
+
             AdjustBPMCommand = new RelayCommand(param => { if (param != null) BPM += int.Parse(param.ToString()); });
             AdjustPitchCommand = new RelayCommand(param => { if (param != null) AdjustKnobA(double.Parse(param.ToString())); });
             AdjustVolumeCommand = new RelayCommand(param => { if (param != null) AdjustKnobB(float.Parse(param.ToString())); });
-            
+
             ShowHelpCommand = new RelayCommand(_ => ShowHelp());
 
             for (int i = 0; i < 16; i++)
@@ -233,26 +298,26 @@ namespace TapSynth.ViewModels
             }
         }
 
-        public void HitPad(int slotIndex)
+        public void HitPad(int padIndex)
         {
             if (IsSaveMode)
             {
                 var json = Newtonsoft.Json.JsonConvert.SerializeObject(_sequencer.CurrentPattern, Newtonsoft.Json.Formatting.Indented);
-                System.IO.File.WriteAllText($"p{slotIndex + 1}.json", json);
+                System.IO.File.WriteAllText($"p{padIndex + 1}.json", json);
                 IsSaveMode = false;
-                ShowStatus($"p{slotIndex + 1}.json saved");
+                ShowStatus($"p{padIndex + 1}.json saved");
                 return;
             }
 
             if (IsLoadMode)
             {
-                string file = $"p{slotIndex + 1}.json";
+                string file = $"p{padIndex + 1}.json";
                 if (System.IO.File.Exists(file))
                 {
                     var json = System.IO.File.ReadAllText(file);
                     _sequencer.CurrentPattern = Newtonsoft.Json.JsonConvert.DeserializeObject<TapSynth.Sequencing.Pattern>(json);
                     UpdateStepDisplay();
-                    ShowStatus($"p{slotIndex + 1}.json loaded");
+                    ShowStatus($"p{padIndex + 1}.json loaded");
                 }
                 else
                 {
@@ -264,23 +329,32 @@ namespace TapSynth.ViewModels
 
             if (IsFxModeActive)
             {
-                TriggerPunchInFx(slotIndex);
+                TriggerPunchInFx(padIndex);
                 IsFxModeActive = false; // Temporary punch-in toggle
                 return;
             }
 
-            _sequencer.PlayPad(slotIndex);
+            if (IsSoundEditMode)
+            {
+                SelectedTrackIndex = padIndex;
+                IsSoundEditMode = false;
+                ShowStatus($"Track {padIndex:D2} Selected");
+                return;
+            }
+
+            // Normal Playback Mode: play pitch/slice of CURRENT track!
+            _sequencer.PlayPad(SelectedTrackIndex, padIndex);
         }
 
         private void TriggerPunchInFx(int slotIndex)
         {
             // Simple Punch-in FX mappings mapped to pads 1-16
-            if (slotIndex == 0) EnableBitcrush = !EnableBitcrush; // FX 1: Toggle global bitcrusher
-            if (slotIndex == 1) BPM = Math.Min(300, BPM * 2); // FX 2: Double time stutter
-            if (slotIndex == 2) BPM = Math.Max(40, BPM / 2); // FX 3: Half time slowdown
-            if (slotIndex == 3) { foreach(var t in _sequencer.CurrentPattern.Tracks) t.PitchSemitones += 12; } // FX 4: Octave up warp
-            if (slotIndex == 4) { foreach(var t in _sequencer.CurrentPattern.Tracks) t.PitchSemitones -= 12; } // FX 5: Octave down warp
-            if (slotIndex == 5) { _sequencer.CurrentPattern.Clear(); UpdateStepDisplay(); } // FX 6: Master killswitch (clear current pattern visually)
+            if (slotIndex == 0) { EnableBitcrush = !EnableBitcrush; ShowStatus(EnableBitcrush ? "FX: Bitcrush ON" : "FX: Bitcrush OFF"); }
+            if (slotIndex == 1) { BPM = Math.Min(300, BPM * 2); ShowStatus("FX: Double Time"); }
+            if (slotIndex == 2) { BPM = Math.Max(40, BPM / 2); ShowStatus("FX: Half Time"); }
+            if (slotIndex == 3) { foreach(var t in _sequencer.CurrentPattern.Tracks) t.PitchSemitones += 12; ShowStatus("FX: Octave Up Warp"); }
+            if (slotIndex == 4) { foreach(var t in _sequencer.CurrentPattern.Tracks) t.PitchSemitones -= 12; ShowStatus("FX: Sub Octave Warp"); }
+            if (slotIndex == 5) { _sequencer.CurrentPattern.Clear(); UpdateStepDisplay(); ShowStatus("FX: Master Killswitch"); }
             UpdateStepDisplay();
         }
 
@@ -304,7 +378,7 @@ namespace TapSynth.ViewModels
 
         private void ShowHelp()
         {
-            var msg = "TapSynth K.O! Hotkeys:\n\n" +
+            var msg = "TapSynth! Hotkeys:\n\n" +
                       "Keyboard Pads: 1234, QWER, ASDF, YXCV/ZXCV\n" +
                       "Play/Stop: SPACE\n" +
                       "Live Looper (WriteMode): Toggle with 'L'\n" +
@@ -312,9 +386,10 @@ namespace TapSynth.ViewModels
                       "New Pattern: P\n" +
                       "Pitch (Knob A): Up/Down Arrows / Mouse Wheel\n" +
                       "Volume (Knob B): Left/Right Arrows / Shift + Scroll\n\n" +
-                      "FX MODE: Toggle FX, then press a pad 1-16 to trigger a performance effect (e.g. Pad 1: Bitcrush, Pad 2: Double BPM, Pad 4: Octave Up).\n\n" +
-                      "SAVE/LOAD: Click Save/Load, then click a pad (1-16) to store/retrieve the pattern sequence to a JSON file!\n\n" +
-                      "If the sequencer is playing and Live Rec is on, hitting pads will record steps!";
+                      "SND MODE: Click SND, then press pad 1-16 to select a Track.\n" +
+                      "MIC REC: Click MIC to sample audio. Click again to save! Saving to Trk 1-8 allows melodic pitch playback. Saving to Trk 9-16 auto-slices the audio 16-ways across the pads!\n\n" +
+                      "FX MODE: Click FX, then press a pad 1-6 to trigger a performance effect (e.g. Pad 1: Bitcrush, Pad 2: Double BPM).\n\n" +
+                      "SAVE/LOAD: Click Save/Load, then click a pad (1-16) to store/retrieve the pattern sequence to a JSON file!";
             System.Windows.MessageBox.Show(msg, "Help", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
         }
 

@@ -7,8 +7,9 @@ namespace TapSynth.Sequencing
     {
         public bool IsActive { get; set; }
         public float Velocity { get; set; } = 1.0f;
+        public double PitchRatio { get; set; } = 1.0;
+        public int PadIndex { get; set; } = 8; // Default root note / slice 8
         public float Pan { get; set; } = 0.0f;
-        public double PitchRatio { get; set; } = 1.0; 
         
         public bool RandomizePitch { get; set; }
         public bool RandomizeVelocity { get; set; }
@@ -16,12 +17,12 @@ namespace TapSynth.Sequencing
 
         public StepInfo Clone()
         {
-            return new StepInfo
-            {
-                IsActive = this.IsActive,
-                Velocity = this.Velocity,
+            return new StepInfo { 
+                IsActive = this.IsActive, 
+                Velocity = this.Velocity, 
+                PitchRatio = this.PitchRatio, 
+                PadIndex = this.PadIndex,
                 Pan = this.Pan,
-                PitchRatio = this.PitchRatio,
                 RandomizePitch = this.RandomizePitch,
                 RandomizeVelocity = this.RandomizeVelocity,
                 Probability = this.Probability

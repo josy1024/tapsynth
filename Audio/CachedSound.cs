@@ -73,6 +73,31 @@ namespace TapSynth.Audio
             return sound;
         }
 
+        public CachedSound(float[] audioData, WaveFormat waveFormat, string name)
+        {
+            AudioData = audioData;
+            WaveFormat = waveFormat;
+            Name = name;
+        }
+
+        public CachedSound[] Slice(int pieces = 16)
+        {
+            var slices = new CachedSound[pieces];
+            int floatsPerSlice = (AudioData.Length / pieces) & ~1; // Ensure stereo boundary
+            
+            for (int i = 0; i < pieces; i++)
+            {
+                int start = i * floatsPerSlice;
+                int end = (i == pieces - 1) ? AudioData.Length : start + floatsPerSlice;
+                int length = end - start;
+
+                var sliceData = new float[length];
+                Array.Copy(AudioData, start, sliceData, 0, length);
+                slices[i] = new CachedSound(sliceData, WaveFormat, $"{Name} s{i+1}");
+            }
+            return slices;
+        }
+
         private CachedSound() { }
     }
 }
