@@ -83,16 +83,54 @@ namespace TapSynth.Audio
         public CachedSound[] Slice(int pieces = 16)
         {
             var slices = new CachedSound[pieces];
-            int floatsPerSlice = (AudioData.Length / pieces) & ~1; // Ensure stereo boundary
+            var boundaries = new List<int>();
             
+            // Simple transient amplitude detection
+            float threshold = 0.05f; 
+            int minDistance = WaveFormat.SampleRate / 15; // At least ~66ms between drum slices
+            
+            for (int i = 0; i < AudioData.Length; i += 2) // Assume stereo
+            {
+                float amp = Math.Abs(AudioData[i]) + (i + 1 < AudioData.Length ? Math.Abs(AudioData[i+1]) : 0);
+                if (amp > threshold)
+                {
+                    if (boundaries.Count == 0 || (i - boundaries[boundaries.Count - 1]) > minDistance * 2) // *2 for stereo array
+                    {
+                        boundaries.Add(i);
+                        if (boundaries.Count == pieces) break;
+                    }
+                }
+            }
+
+            // Fallback: If we couldn't find 16 distinct transients, just pad the remainder evenly
+            while (boundaries.Count < pieces)
+            {
+                if (boundaries.Count == 0) boundaries.Add(0);
+                else boundaries.Add(Math.Min(AudioData.Length, boundaries[boundaries.Count - 1] + ((AudioData.Length / pieces) & ~1)));
+            }
+
             for (int i = 0; i < pieces; i++)
             {
-                int start = i * floatsPerSlice;
-                int end = (i == pieces - 1) ? AudioData.Length : start + floatsPerSlice;
+                int start = boundaries[i];
+                int end = (i == pieces - 1) ? AudioData.Length : boundaries[i + 1];
+                if (end > AudioData.Length) end = AudioData.Length;
+                
                 int length = end - start;
+                if (length <= 0) length = 2; // Prevent array crash on zero-length slices
 
                 var sliceData = new float[length];
                 Array.Copy(AudioData, start, sliceData, 0, length);
+                
+                // Add minor 10ms fade out to the tail to prevent DC-offset popping
+                int fadeSamples = Math.Min(441, length / 2) & ~1; 
+                for (int f = 0; f < fadeSamples; f += 2)
+                {
+                    float multiplier = (float)(fadeSamples - f) / fadeSamples;
+                    int fIndex = length - fadeSamples + f;
+                    if (fIndex < length) sliceData[fIndex] *= multiplier;
+                    if (fIndex + 1 < length) sliceData[fIndex + 1] *= multiplier;
+                }
+
                 slices[i] = new CachedSound(sliceData, WaveFormat, $"{Name} s{i+1}");
             }
             return slices;

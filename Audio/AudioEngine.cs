@@ -8,16 +8,20 @@ namespace TapSynth.Audio
     public class AudioEngine : IDisposable
     {
         private IWavePlayer _outputDevice;
-        private WaveInEvent _inputDevice;
+        private IWaveIn _inputDevice;
+        private NAudio.Wave.WaveFileWriter _recordWriter;
+        private string _tempRecFile;
         private readonly MixingSampleProvider _mixer;
         private readonly CrusherLimiter _masterEffects;
         private readonly VolumeSampleProvider _masterVolume;
-        private List<float> _recordedAudio = new List<float>();
+        private readonly AnalyzerSampleProvider _masterAnalyzer;
 
         public PolyphonicVoiceAllocator[] Slots { get; private set; }
 
         public CrusherLimiter MasterEffects => _masterEffects;
         public VolumeSampleProvider MasterVolume => _masterVolume;
+        public AnalyzerSampleProvider MasterAnalyzer => _masterAnalyzer;
+        public float InputPeak { get; private set; }
 
         public static List<string> GetOutputDevices()
         {
@@ -28,7 +32,7 @@ namespace TapSynth.Audio
 
         public static List<string> GetInputDevices()
         {
-            var list = new List<string> { "Default Microphone" };
+            var list = new List<string> { "Default Microphone", "System Audio (Loopback)" };
             for (int i = 0; i < WaveIn.DeviceCount; i++) list.Add(WaveIn.GetCapabilities(i).ProductName);
             return list;
         }
@@ -39,6 +43,7 @@ namespace TapSynth.Audio
             _mixer = new MixingSampleProvider(waveFormat) { ReadFully = true };
             _masterEffects = new CrusherLimiter(_mixer);
             _masterVolume = new VolumeSampleProvider(_masterEffects) { Volume = 0.8f };
+            _masterAnalyzer = new AnalyzerSampleProvider(_masterVolume);
             
             Slots = new PolyphonicVoiceAllocator[16];
             for (int i = 0; i < 16; i++)
@@ -55,39 +60,67 @@ namespace TapSynth.Audio
             _outputDevice?.Dispose();
             // deviceNumber -1 is default mapper
             _outputDevice = new WaveOutEvent { DeviceNumber = deviceNumber, DesiredLatency = 50 };
-            _outputDevice.Init(_masterVolume);
+            _outputDevice.Init(_masterAnalyzer);
             _outputDevice.Play();
         }
 
-        public void StartRecording(int inputDeviceNumber)
+        public void StartRecording(int selectionIndex)
         {
-            _recordedAudio.Clear();
             _inputDevice?.Dispose();
+            _recordWriter?.Dispose();
             
-            _inputDevice = new WaveInEvent { DeviceNumber = inputDeviceNumber, WaveFormat = new WaveFormat(44100, 16, 1) }; // Mono 16-bit
+            _tempRecFile = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "tapsynth_rec.wav");
+
+            if (selectionIndex == 1) // System Audio Loopback
+            {
+                _inputDevice = new WasapiLoopbackCapture();
+            }
+            else 
+            {
+                int deviceNumber = selectionIndex <= 0 ? -1 : selectionIndex - 2;
+                _inputDevice = new WaveInEvent { DeviceNumber = deviceNumber, WaveFormat = new WaveFormat(44100, 16, 1) }; // Mono
+            }
+
+            _recordWriter = new WaveFileWriter(_tempRecFile, _inputDevice.WaveFormat);
+
             _inputDevice.DataAvailable += (s, a) => {
-                for (int i = 0; i < a.BytesRecorded; i += 2)
+                _recordWriter.Write(a.Buffer, 0, a.BytesRecorded);
+                
+                float max = 0;
+                int bytesPerSample = _inputDevice.WaveFormat.BitsPerSample / 8;
+                for (int i = 0; i < a.BytesRecorded; i += bytesPerSample)
                 {
-                    short sample = BitConverter.ToInt16(a.Buffer, i);
-                    float f = sample / 32768f;
-                    _recordedAudio.Add(f); // Mono L
-                    _recordedAudio.Add(f); // Mono R to make it stereo format
+                    float val = 0;
+                    if (bytesPerSample == 4) val = Math.Abs(BitConverter.ToSingle(a.Buffer, i));
+                    else if (bytesPerSample == 2) val = Math.Abs(BitConverter.ToInt16(a.Buffer, i) / 32768f);
+                    if (val > max) max = val;
                 }
+                InputPeak = max;
             };
+
             _inputDevice.StartRecording();
         }
 
         public CachedSound StopRecordingAndGetSound(string name)
         {
-            _inputDevice?.StopRecording();
-            _inputDevice?.Dispose();
-            _inputDevice = null;
+            if (_inputDevice != null)
+            {
+                _inputDevice.StopRecording();
+                _inputDevice.Dispose();
+                _inputDevice = null;
+            }
+            
+            if (_recordWriter != null)
+            {
+                _recordWriter.Dispose();
+                _recordWriter = null;
+            }
 
-            if (_recordedAudio.Count == 0) return null;
+            if (!System.IO.File.Exists(_tempRecFile)) return null;
 
-            var array = _recordedAudio.ToArray();
-            var format = WaveFormat.CreateIeeeFloatWaveFormat(44100, 2); // Now stereo
-            return new CachedSound(array, format, name);
+            var sound = new CachedSound(_tempRecFile, 44100);
+            sound.Name = name;
+            return sound;
         }
 
         public void PlaySlot(int slotIndex, CachedSound sound, double pitchRatio = 1.0, float velocity = 1.0f, float pan = 0.0f)

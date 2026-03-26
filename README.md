@@ -9,7 +9,12 @@ A playful, lightweight sample‑audio‑synth inspired by the PO‑33 workflow. 
 
 ## feature ideas
 
-* run multiple instances of the app and sync/chain them (FX)?
+* run multiple instances of the app and sync them (FX)?
+* virtual input an output's https://vb-audio.com/
+
 * use one for drums and one for melody
 
 * record mode for slots 1-16 "cachedsounds"
+
+* in snd mode, when selecting a slot, change background color from mic button an show the selected slot nr in status bar - text "SND TRK {nr}, press Mic to Record"
+

@@ -174,9 +174,9 @@ namespace TapSynth.ViewModels
             ToggleAudioRecordCommand = new RelayCommand(_ => {
                 if (!IsRecordingAudio)
                 {
-                    _audio.StartRecording(SelectedInputDevice - 1);
+                    _audio.StartRecording(SelectedInputDevice);
                     IsRecordingAudio = true;
-                    ShowStatus("Mic Recording active...");
+                    ShowStatus("Recording...");
                 }
                 else
                 {
@@ -222,6 +222,10 @@ namespace TapSynth.ViewModels
             }
 
             _sequencer.OnStepChanged += OnStepChanged;
+
+            _uiTimer = new System.Windows.Threading.DispatcherTimer { Interval = TimeSpan.FromMilliseconds(30) }; // ~33fps UI updates
+            _uiTimer.Tick += (s, e) => UpdateVisualizers();
+            _uiTimer.Start();
         }
 
         private void TogglePlay()
@@ -395,8 +399,61 @@ namespace TapSynth.ViewModels
 
         public void Cleanup()
         {
+            _uiTimer?.Stop();
             _sequencer.Clock.Stop();
             _audio.Dispose();
+        }
+
+        public System.Windows.Media.PointCollection WaveformPoints { get; set; } = new System.Windows.Media.PointCollection();
+        public System.Windows.Media.PointCollection SpectrumPoints { get; set; } = new System.Windows.Media.PointCollection();
+        public double OutputLevel { get; set; }
+        public double InputLevel { get; set; }
+
+        private System.Windows.Threading.DispatcherTimer _uiTimer;
+
+        private void UpdateVisualizers()
+        {
+            if (_audio.MasterAnalyzer != null)
+            {
+                OutputLevel = _audio.MasterAnalyzer.LastPeak * 100.0;
+                OnPropertyChanged(nameof(OutputLevel));
+
+                var wavePts = new System.Windows.Media.PointCollection();
+                var buffer = _audio.MasterAnalyzer.WaveformBuffer;
+                double width = 200;
+                double height = 40;
+                for (int i = 0; i < 2048; i += 8)
+                {
+                    double x = (i / 2048.0) * width;
+                    double y = (height / 2) - (buffer[i] * (height / 2));
+                    wavePts.Add(new System.Windows.Point(x, y));
+                }
+                WaveformPoints = wavePts;
+                OnPropertyChanged(nameof(WaveformPoints));
+
+                var specPts = new System.Windows.Media.PointCollection();
+                double sWidth = 200;
+                double sHeight = 40;
+                
+                specPts.Add(new System.Windows.Point(0, sHeight)); // Start bottom left
+                
+                for (int i = 0; i < 256; i += 2)
+                {
+                    double x = (i / 256.0) * sWidth;
+                    double mag = _audio.MasterAnalyzer.SpectrumBuffer[i] * 600.0; // Scaled specifically for aesthetics
+                    if (mag > sHeight) mag = sHeight;
+                    double y = sHeight - mag;
+                    specPts.Add(new System.Windows.Point(x, y));
+                }
+                
+                specPts.Add(new System.Windows.Point(sWidth, sHeight)); // End bottom right
+                
+                SpectrumPoints = specPts;
+                OnPropertyChanged(nameof(SpectrumPoints));
+            }
+
+            InputLevel = _audio.InputPeak * 100.0;
+            OnPropertyChanged(nameof(InputLevel));
         }
     }
 }
