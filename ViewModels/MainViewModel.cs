@@ -159,16 +159,16 @@ namespace TapSynth.ViewModels
 
             TogglePlayCommand = new RelayCommand(_ => TogglePlay());
             ToggleBitcrushCommand = new RelayCommand(_ => EnableBitcrush = !EnableBitcrush);
-            ToggleFxModeCommand = new RelayCommand(_ => { 
-                IsFxModeActive = !IsFxModeActive; 
-                if (IsFxModeActive) ShowStatus("FX Mode: Press pad 1-6!"); 
+            ToggleFxModeCommand = new RelayCommand(_ => {
+                IsFxModeActive = !IsFxModeActive;
+                if (IsFxModeActive) ShowStatus("FX Mode: Press pad 1-6!");
             });
             ToggleLiveLooperCommand = new RelayCommand(_ => LiveLooperMode = !LiveLooperMode);
             ToggleSaveModeCommand = new RelayCommand(_ => IsSaveMode = !IsSaveMode);
             ToggleLoadModeCommand = new RelayCommand(_ => IsLoadMode = !IsLoadMode);
-            ToggleSoundModeCommand = new RelayCommand(_ => { 
-                IsSoundEditMode = !IsSoundEditMode; 
-                if (IsSoundEditMode) ShowStatus("Select Track (1-16)..."); 
+            ToggleSoundModeCommand = new RelayCommand(_ => {
+                IsSoundEditMode = !IsSoundEditMode;
+                if (IsSoundEditMode) ShowStatus("Select Track (1-16)...");
             });
 
             ToggleAudioRecordCommand = new RelayCommand(_ => {
@@ -180,7 +180,8 @@ namespace TapSynth.ViewModels
                 }
                 else
                 {
-                    var sound = _audio.StopRecordingAndGetSound($"Rec_Slot{SelectedTrackIndex}");
+                    var outFile = $"rec_slot{SelectedTrackIndex+1}.wav";
+                    var sound = _audio.StopRecordingAndGetSound($"Rec_Slot{SelectedTrackIndex}", outFile);
                     if (sound != null)
                     {
                         if (SelectedTrackIndex >= 8)
@@ -434,9 +435,9 @@ namespace TapSynth.ViewModels
                 var specPts = new System.Windows.Media.PointCollection();
                 double sWidth = 200;
                 double sHeight = 40;
-                
+
                 specPts.Add(new System.Windows.Point(0, sHeight)); // Start bottom left
-                
+
                 for (int i = 0; i < 256; i += 2)
                 {
                     double x = (i / 256.0) * sWidth;
@@ -445,9 +446,9 @@ namespace TapSynth.ViewModels
                     double y = sHeight - mag;
                     specPts.Add(new System.Windows.Point(x, y));
                 }
-                
+
                 specPts.Add(new System.Windows.Point(sWidth, sHeight)); // End bottom right
-                
+
                 SpectrumPoints = specPts;
                 OnPropertyChanged(nameof(SpectrumPoints));
             }

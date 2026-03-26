@@ -15,7 +15,7 @@ namespace TapSynth
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.IsRepeat) return; // Ignore hold repetition
-            
+
             if (DataContext is MainViewModel vm)
             {
                 int slotHit = -1;
@@ -42,7 +42,7 @@ namespace TapSynth
                     case Key.X: slotHit = 13; break;
                     case Key.C: slotHit = 14; break;
                     case Key.V: slotHit = 15; break;
-                    
+
                     // Hardware Controls
                     case Key.Space:
                         vm.TogglePlayCommand.Execute(null);
@@ -59,7 +59,19 @@ namespace TapSynth
                         // Toggle Live Looper / Write Mode
                         vm.LiveLooperMode = !vm.LiveLooperMode;
                         break;
-                        
+                    case Key.D5:
+                        vm.ToggleSoundModeCommand.Execute(null);
+                        break;
+                    case Key.T:
+                        vm.ToggleFxModeCommand.Execute(null);
+                        break;
+                    case Key.G:
+                        vm.ToggleSaveModeCommand.Execute(null);
+                        break;
+                    case Key.B:
+                        vm.ToggleLoadModeCommand.Execute(null);
+                        break;
+
                     // Arrow Keys / Media Keys mapped to Knob A (Pitch) and Knob B (Volume)
                     case Key.Up:
                     case Key.MediaNextTrack:

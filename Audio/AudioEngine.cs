@@ -44,7 +44,7 @@ namespace TapSynth.Audio
             _masterEffects = new CrusherLimiter(_mixer);
             _masterVolume = new VolumeSampleProvider(_masterEffects) { Volume = 0.8f };
             _masterAnalyzer = new AnalyzerSampleProvider(_masterVolume);
-            
+
             Slots = new PolyphonicVoiceAllocator[16];
             for (int i = 0; i < 16; i++)
             {
@@ -68,14 +68,14 @@ namespace TapSynth.Audio
         {
             _inputDevice?.Dispose();
             _recordWriter?.Dispose();
-            
+
             _tempRecFile = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "tapsynth_rec.wav");
 
             if (selectionIndex == 1) // System Audio Loopback
             {
                 _inputDevice = new WasapiLoopbackCapture();
             }
-            else 
+            else
             {
                 int deviceNumber = selectionIndex <= 0 ? -1 : selectionIndex - 2;
                 _inputDevice = new WaveInEvent { DeviceNumber = deviceNumber, WaveFormat = new WaveFormat(44100, 16, 1) }; // Mono
@@ -85,7 +85,7 @@ namespace TapSynth.Audio
 
             _inputDevice.DataAvailable += (s, a) => {
                 _recordWriter.Write(a.Buffer, 0, a.BytesRecorded);
-                
+
                 float max = 0;
                 int bytesPerSample = _inputDevice.WaveFormat.BitsPerSample / 8;
                 for (int i = 0; i < a.BytesRecorded; i += bytesPerSample)
@@ -101,7 +101,7 @@ namespace TapSynth.Audio
             _inputDevice.StartRecording();
         }
 
-        public CachedSound StopRecordingAndGetSound(string name)
+        public CachedSound StopRecordingAndGetSound(string name, string outFilePath = null)
         {
             if (_inputDevice != null)
             {
@@ -109,14 +109,26 @@ namespace TapSynth.Audio
                 _inputDevice.Dispose();
                 _inputDevice = null;
             }
-            
+
             if (_recordWriter != null)
             {
                 _recordWriter.Dispose();
                 _recordWriter = null;
             }
-
             if (!System.IO.File.Exists(_tempRecFile)) return null;
+
+            // Optionally copy the recorded WAV to the current working directory
+            try
+            {
+                if (!string.IsNullOrEmpty(outFilePath))
+                {
+                    System.IO.File.Copy(_tempRecFile, outFilePath, true);
+                }
+            }
+            catch
+            {
+                // ignore copy errors
+            }
 
             var sound = new CachedSound(_tempRecFile, 44100);
             sound.Name = name;
