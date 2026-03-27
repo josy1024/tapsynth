@@ -84,119 +84,87 @@ public CachedSound[] Slice(int pieces = 16)
 {
     var slices = new CachedSound[pieces];
     int channels = WaveFormat.Channels <= 0 ? 2 : WaveFormat.Channels;
+    if (AudioData == null || AudioData.Length == 0) return slices;
 
-    if (AudioData == null || AudioData.Length == 0)
+    int totalFrames = AudioData.Length / channels;
+    var boundaries = new List<int>();
+
+    // --- PARAMETERS ---
+    float sensitivity = 1.5f;       // Multiplier for a jump to be a "hit"
+    int minDistance = WaveFormat.SampleRate / 10; // 100ms cooldown
+    float emaAlphaLong = 0.01f;     // Slow average (The "Room" volume)
+    float emaAlphaShort = 0.2f;     // Fast average (The "Current" hit)
+
+    float longTermAvg = 0.05f;
+    float shortTermAvg = 0f;
+
+    // First, find the absolute peak to normalize our logic
+    float globalPeak = 0f;
+    for (int i = 0; i < AudioData.Length; i++)
+        if (Math.Abs(AudioData[i]) > globalPeak) globalPeak = Math.Abs(AudioData[i]);
+
+    for (int f = 0; f < totalFrames; f++)
     {
-        for (int i = 0; i < pieces; i++)
-            slices[i] = new CachedSound(new float[channels], WaveFormat, $"{Name} s{i+1}");
-        return slices;
-    }
+        float sample = Math.Abs(AudioData[f * channels]);
 
-    int frames = AudioData.Length / channels;
-    var boundariesFrames = new List<int>();
+        // Update two envelopes: one slow, one fast
+        longTermAvg = (emaAlphaLong * sample) + (1 - emaAlphaLong) * longTermAvg;
+        shortTermAvg = (emaAlphaShort * sample) + (1 - emaAlphaShort) * shortTermAvg;
 
-    // --- AGGRESSIVE BASS TUNING ---
-    float sensitivity = 1.8f;      // High jump required to trigger
-    float noiseFloor = 0.12f;      // Ignore the "hum" of the bass tail
-    float emaAlpha = 0.1f;         // Heavy smoothing to ignore bass oscillations
-    int lookback = 30;             // Large window to capture the whole bass "thump"
-    int minDistance = WaveFormat.SampleRate / 4; // 250ms: Hard block for 1/4 second to prevent sub-splitting
-
-    float env = 0f;
-    float[] envPerFrame = new float[frames];
-    float globalMax = 0.01f;
-
-    // 1. Calculate smoothed volume envelope and find global peak
-    for (int f = 0; f < frames; f++)
-    {
-        float l = Math.Abs(AudioData[f * channels]);
-        float r = channels > 1 ? Math.Abs(AudioData[f * channels + 1]) : 0f;
-        float mix = (l + r) / (channels > 1 ? 2f : 1f);
-
-        env = (emaAlpha * mix) + (1f - emaAlpha) * env;
-        envPerFrame[f] = env;
-        if (env > globalMax) globalMax = env;
-    }
-
-    // 2. Detection with Peak-Locking
-    float lastPeakInSlice = 0f;
-
-    for (int f = lookback; f < frames; f++)
-    {
-        float currentVal = envPerFrame[f];
-        float pastVal = envPerFrame[f - lookback];
-
-        // Track the peak of the current "active" sound to avoid re-triggering during decay
-        if (boundariesFrames.Count > 0 && (f - boundariesFrames.Last()) < minDistance * 2)
+        // TRIGGER LOGIC:
+        // 1. Short term spike must be significantly higher than the long term average
+        // 2. Short term must be above a minimum "silence" floor
+        // 3. Must respect the cooldown
+        if (shortTermAvg > (longTermAvg * sensitivity) && shortTermAvg > (globalPeak * 0.1f))
         {
-            if (currentVal > lastPeakInSlice) lastPeakInSlice = currentVal;
-        }
-
-        bool isRapidRise = currentVal > (pastVal * sensitivity);
-        bool isAboveNoise = currentVal > noiseFloor;
-
-        // Key Logic: Only trigger if we aren't currently inside a loud sustained peak
-        bool isNotInsideActivePeak = currentVal >= lastPeakInSlice * 0.9f;
-
-        if (isRapidRise && isAboveNoise)
-        {
-            bool timeCheck = (boundariesFrames.Count == 0 || (f - boundariesFrames.Last()) > minDistance);
-
-            if (timeCheck)
+            if (boundaries.Count == 0 || (f - boundaries[^1]) > minDistance)
             {
-                boundariesFrames.Add(f);
-                lastPeakInSlice = currentVal; // Reset peak tracking for new slice
-                if (boundariesFrames.Count == pieces) break;
+                // Verify this is the "Start" of the peak (Slope is positive)
+                if (f + 5 < totalFrames && Math.Abs(AudioData[(f+5)*channels]) >= sample)
+                {
+                    boundaries.Add(f);
+                    if (boundaries.Count >= pieces) break;
+
+                    // After a hit, "jump" the long term average up to prevent
+                    // the "tail" of a fat bass from re-triggering
+                    longTermAvg = shortTermAvg * 1.2f;
+                }
             }
         }
     }
 
-    // 3. Fallback distribution
-    if (boundariesFrames.Count < pieces)
+    // --- FALLBACK: If not enough slices found, fill the rest evenly ---
+    if (boundaries.Count < pieces)
     {
-        if (boundariesFrames.Count == 0) boundariesFrames.Add(0);
-        int lastPos = boundariesFrames.Last();
-        int step = Math.Max(minDistance, (frames - lastPos) / (pieces - boundariesFrames.Count + 1));
-
-        while (boundariesFrames.Count < pieces)
+        int lastPos = boundaries.Count > 0 ? boundaries[^1] : 0;
+        int remaining = pieces - boundaries.Count;
+        int step = (totalFrames - lastPos) / (remaining + 1);
+        for (int i = 0; i < remaining; i++)
         {
-            int next = boundariesFrames.Last() + step;
-            if (next >= frames - 1) next = frames - 1;
-            boundariesFrames.Add(next);
+            lastPos += step;
+            boundaries.Add(Math.Min(lastPos, totalFrames - 1));
         }
     }
 
-    // 4. Slice Creation
+    // --- CREATE THE CACHED SOUNDS ---
     for (int i = 0; i < pieces; i++)
     {
-        int startFrame = boundariesFrames[i];
-        int endFrame = (i == pieces - 1) ? frames : boundariesFrames[i + 1];
+        int start = boundaries[i] * channels;
+        int end = (i == pieces - 1) ? AudioData.Length : boundaries[i + 1] * channels;
+        int len = Math.Max(channels, end - start);
 
-        int startIdx = startFrame * channels;
-        int endIdx = endFrame * channels;
-        int length = Math.Max(channels, endIdx - startIdx);
+        float[] data = new float[len];
+        Array.Copy(AudioData, start, data, 0, Math.Min(len, AudioData.Length - start));
 
-        var sliceData = new float[length];
-        int actualCopy = Math.Min(length, AudioData.Length - startIdx);
-        if (actualCopy > 0) Array.Copy(AudioData, startIdx, sliceData, 0, actualCopy);
+        // Anti-pop fade (5ms)
+        int fade = Math.Min((int)(WaveFormat.SampleRate * 0.005) * channels, len / 2);
+        for (int j = 0; j < fade; j++) data[len - 1 - j] *= (j / (float)fade);
 
-        // 15ms Fade out for smoother transitions on heavy bass
-        int fadeSamples = Math.Min((int)(WaveFormat.SampleRate * 0.015) * channels, length / 2);
-        for (int s = 0; s < fadeSamples; s += channels)
-        {
-            float mult = (float)(fadeSamples - s) / fadeSamples;
-            int tailIdx = length - fadeSamples + s;
-            for (int c = 0; c < channels; c++)
-            {
-                if (tailIdx + c < length) sliceData[tailIdx + c] *= mult;
-            }
-        }
-
-        slices[i] = new CachedSound(sliceData, WaveFormat, $"{Name} s{i+1}");
+        slices[i] = new CachedSound(data, WaveFormat, $"{Name}_s{i + 1}");
     }
-
     return slices;
 }
+
 
         private CachedSound() { }
     }
