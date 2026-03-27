@@ -89,76 +89,93 @@ public CachedSound[] Slice(int pieces = 16)
     int totalFrames = AudioData.Length / channels;
     var boundaries = new List<int>();
 
-    // --- PARAMETERS ---
-    float sensitivity = 1.5f;       // Multiplier for a jump to be a "hit"
-    int minDistance = WaveFormat.SampleRate / 10; // 100ms cooldown
-    float emaAlphaLong = 0.01f;     // Slow average (The "Room" volume)
-    float emaAlphaShort = 0.2f;     // Fast average (The "Current" hit)
+    // --- FINE TUNED PARAMETERS ---
+    float sensitivity = 1.7f;        // Higher = harder to trigger (prevents splitting)
+    int minDistance = WaveFormat.SampleRate / 8; // ~125ms (Standard 16th note at 120bpm)
 
-    float longTermAvg = 0.05f;
+    float emaAlphaLong = 0.015f;     // Increased slightly to "forget" the bass faster
+    float emaAlphaShort = 0.25f;     // Fast tracking for sharp transients
+
+    float longTermAvg = 0.02f;
     float shortTermAvg = 0f;
+    bool isGateOpen = true;          // Logic gate to prevent double-triggering
+    float resetThreshold = 0.4f;     // Must drop below 40% of the last peak to reset
 
-    // First, find the absolute peak to normalize our logic
     float globalPeak = 0f;
     for (int i = 0; i < AudioData.Length; i++)
         if (Math.Abs(AudioData[i]) > globalPeak) globalPeak = Math.Abs(AudioData[i]);
+
+    float lastTriggerPeak = 0f;
 
     for (int f = 0; f < totalFrames; f++)
     {
         float sample = Math.Abs(AudioData[f * channels]);
 
-        // Update two envelopes: one slow, one fast
         longTermAvg = (emaAlphaLong * sample) + (1 - emaAlphaLong) * longTermAvg;
         shortTermAvg = (emaAlphaShort * sample) + (1 - emaAlphaShort) * shortTermAvg;
 
-        // TRIGGER LOGIC:
-        // 1. Short term spike must be significantly higher than the long term average
-        // 2. Short term must be above a minimum "silence" floor
-        // 3. Must respect the cooldown
-        if (shortTermAvg > (longTermAvg * sensitivity) && shortTermAvg > (globalPeak * 0.1f))
+        // Reset the gate if the volume has dropped significantly
+        if (!isGateOpen && shortTermAvg < (lastTriggerPeak * resetThreshold))
+        {
+            isGateOpen = true;
+        }
+
+        // TRIGGER LOGIC
+        if (isGateOpen && shortTermAvg > (longTermAvg * sensitivity) && shortTermAvg > (globalPeak * 0.08f))
         {
             if (boundaries.Count == 0 || (f - boundaries[^1]) > minDistance)
             {
-                // Verify this is the "Start" of the peak (Slope is positive)
-                if (f + 5 < totalFrames && Math.Abs(AudioData[(f+5)*channels]) >= sample)
+                // Look ahead to confirm it's a real peak, not just noise
+                float lookAhead = (f + 4 < totalFrames) ? Math.Abs(AudioData[(f + 4) * channels]) : 0;
+
+                if (lookAhead >= sample * 0.9f)
                 {
                     boundaries.Add(f);
-                    if (boundaries.Count >= pieces) break;
+                    lastTriggerPeak = shortTermAvg;
+                    isGateOpen = false; // Lock the gate!
 
-                    // After a hit, "jump" the long term average up to prevent
-                    // the "tail" of a fat bass from re-triggering
-                    longTermAvg = shortTermAvg * 1.2f;
+                    if (boundaries.Count >= pieces) break;
                 }
             }
         }
     }
 
-    // --- FALLBACK: If not enough slices found, fill the rest evenly ---
+    // --- FALLBACK (Evenly distribute remaining slots) ---
     if (boundaries.Count < pieces)
     {
         int lastPos = boundaries.Count > 0 ? boundaries[^1] : 0;
         int remaining = pieces - boundaries.Count;
-        int step = (totalFrames - lastPos) / (remaining + 1);
+        int step = Math.Max(minDistance, (totalFrames - lastPos) / (remaining + 1));
         for (int i = 0; i < remaining; i++)
         {
             lastPos += step;
-            boundaries.Add(Math.Min(lastPos, totalFrames - 1));
+            if (lastPos >= totalFrames) lastPos = totalFrames - 1;
+            boundaries.Add(lastPos);
         }
     }
 
-    // --- CREATE THE CACHED SOUNDS ---
+    // --- OUTPUT SLICING ---
     for (int i = 0; i < pieces; i++)
     {
-        int start = boundaries[i] * channels;
-        int end = (i == pieces - 1) ? AudioData.Length : boundaries[i + 1] * channels;
-        int len = Math.Max(channels, end - start);
+        int startFrame = boundaries[i];
+        int endFrame = (i == pieces - 1) ? totalFrames : boundaries[i + 1];
+
+        int startIdx = startFrame * channels;
+        int endIdx = endFrame * channels;
+        int len = Math.Max(channels, endIdx - startIdx);
 
         float[] data = new float[len];
-        Array.Copy(AudioData, start, data, 0, Math.Min(len, AudioData.Length - start));
+        int copyLen = Math.Min(len, AudioData.Length - startIdx);
+        if (copyLen > 0) Array.Copy(AudioData, startIdx, data, 0, copyLen);
 
-        // Anti-pop fade (5ms)
-        int fade = Math.Min((int)(WaveFormat.SampleRate * 0.005) * channels, len / 2);
-        for (int j = 0; j < fade; j++) data[len - 1 - j] *= (j / (float)fade);
+        // 8ms Fade to smooth the transitions
+        int fade = Math.Min((int)(WaveFormat.SampleRate * 0.008) * channels, len / 2);
+        for (int j = 0; j < fade; j++)
+        {
+            float mult = j / (float)fade;
+            int idx = len - 1 - j;
+            if (idx >= 0) data[idx] *= mult;
+        }
 
         slices[i] = new CachedSound(data, WaveFormat, $"{Name}_s{i + 1}");
     }
