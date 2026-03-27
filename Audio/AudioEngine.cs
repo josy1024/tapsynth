@@ -39,19 +39,30 @@ namespace TapSynth.Audio
 
         public AudioEngine(int sampleRate = 44100)
         {
-            var waveFormat = WaveFormat.CreateIeeeFloatWaveFormat(sampleRate, 2);
-            _mixer = new MixingSampleProvider(waveFormat) { ReadFully = true };
-            _masterEffects = new CrusherLimiter(_mixer);
-            _masterVolume = new VolumeSampleProvider(_masterEffects) { Volume = 0.8f };
-            _masterAnalyzer = new AnalyzerSampleProvider(_masterVolume);
-
-            Slots = new PolyphonicVoiceAllocator[16];
-            for (int i = 0; i < 16; i++)
+            try
             {
-                Slots[i] = new PolyphonicVoiceAllocator(_mixer, waveFormat, 4);
-            }
+                TapSynth.Utils.Logger.Info($"AudioEngine ctor: sampleRate={sampleRate}");
+                var waveFormat = WaveFormat.CreateIeeeFloatWaveFormat(sampleRate, 2);
+                _mixer = new MixingSampleProvider(waveFormat) { ReadFully = true };
+                _masterEffects = new CrusherLimiter(_mixer);
+                _masterVolume = new VolumeSampleProvider(_masterEffects) { Volume = 0.8f };
+                _masterAnalyzer = new AnalyzerSampleProvider(_masterVolume);
 
-            SetOutputDevice(-1); // Default device
+                Slots = new PolyphonicVoiceAllocator[16];
+                for (int i = 0; i < 16; i++)
+                {
+                    Slots[i] = new PolyphonicVoiceAllocator(_mixer, waveFormat, 4);
+                }
+
+                TapSynth.Utils.Logger.Info($"Detected Output devices: {WaveOut.DeviceCount}");
+                SetOutputDevice(-1); // Default device
+                TapSynth.Utils.Logger.Info("AudioEngine initialized successfully");
+            }
+            catch (Exception ex)
+            {
+                TapSynth.Utils.Logger.Exception(ex, "AudioEngine ctor failed");
+                throw;
+            }
         }
 
         public void SetOutputDevice(int deviceNumber)
@@ -98,6 +109,8 @@ namespace TapSynth.Audio
                 InputPeak = max;
             };
 
+            TapSynth.Utils.Logger.Info($"StartRecording: selectionIndex={selectionIndex}, tempFile={_tempRecFile}");
+
             _inputDevice.StartRecording();
         }
 
@@ -122,29 +135,26 @@ namespace TapSynth.Audio
             {
                 if (!string.IsNullOrEmpty(outFilePath))
                 {
+                    TapSynth.Utils.Logger.Info($"Copying recorded WAV to {outFilePath}");
                     System.IO.File.Copy(_tempRecFile, outFilePath, true);
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                // ignore copy errors
+                TapSynth.Utils.Logger.Exception(ex, "Copy recorded WAV failed");
             }
 
             try
             {
+                TapSynth.Utils.Logger.Info($"Creating CachedSound from {_tempRecFile}");
                 var sound = new CachedSound(_tempRecFile, 44100);
                 sound.Name = name;
+                TapSynth.Utils.Logger.Info("CachedSound created successfully");
                 return sound;
             }
             catch (Exception ex)
             {
-                try
-                {
-                    var logPath = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "tapsynth_error.log");
-                    var msg = $"{DateTime.UtcNow:O} - Error creating CachedSound from {_tempRecFile}: {ex}\n";
-                    System.IO.File.AppendAllText(logPath, msg);
-                }
-                catch { }
+                TapSynth.Utils.Logger.Exception(ex, "CachedSound creation failed");
                 return null;
             }
         }

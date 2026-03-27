@@ -126,9 +126,19 @@ namespace TapSynth.ViewModels
 
         public MainViewModel()
         {
-            _audio = new AudioEngine();
-            _sequencer = new Sequencer(_audio);
-            _undoManager = new UndoRedoManager();
+            try
+            {
+                TapSynth.Utils.Logger.Info("MainViewModel ctor start");
+                _audio = new AudioEngine();
+                _sequencer = new Sequencer(_audio);
+                _undoManager = new UndoRedoManager();
+                TapSynth.Utils.Logger.Info("MainViewModel initialized");
+            }
+            catch (Exception ex)
+            {
+                TapSynth.Utils.Logger.Exception(ex, "MainViewModel ctor failed");
+                throw;
+            }
 
             InputDevices = new System.Collections.ObjectModel.ObservableCollection<string>(AudioEngine.GetInputDevices());
             OutputDevices = new System.Collections.ObjectModel.ObservableCollection<string>(AudioEngine.GetOutputDevices());
